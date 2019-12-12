@@ -2,11 +2,28 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//In general, this is what we want to be importing.
+import { createStore, applyMiddleware, compose } from "redux";
+import { Provider } from "react-redux";
+import thunk from "redux-thunk";
+import logger from "redux-logger";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+//First we will need to create all our directories and set up and export a reducer somewhere else, then import
+import reducer from "./reducers";
+
+//Then we do this...
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+//Create our store.
+const store = createStore(
+    reducer,
+    composeEnhancers(applyMiddleware(thunk, logger))
+);
+
+//And render everything. Yay!
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root'));
