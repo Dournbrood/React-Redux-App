@@ -1,5 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Dependencies installed with `npm install axios react react-dom react-loader-spinner react-redux react-scripts redux redux-logger redux-thunk`
+
 ## Available Scripts
 
 In the project directory, you can run:
