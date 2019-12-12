@@ -1,5 +1,7 @@
 //Largely speaking, you want to write your Reducer immediately after you get done structuring files and getting basic app features done. Now would be a good time to save and commit if you haven't.
 
+import { REQUEST_JOKE, JOKE_RECEIVED, REQUEST_FAILED } from "../actions";
+
 const initialState = {
     joke: null,
     busy: false,
@@ -30,3 +32,5 @@ const reducer = (state = initialState, action) => {
             return (state);
     }
 }
+
+export default reducer;
